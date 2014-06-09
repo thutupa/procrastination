@@ -1,0 +1,2 @@
+prettytable: version 146. Copied from https://code.google.com/p/prettytable/source/checkout using the command there.
+  rejected: tabulate and texttable (prettytable seems more mature than either)

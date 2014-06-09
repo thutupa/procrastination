@@ -1,10 +1,11 @@
 #!/usr/bin/python
 
+import fixpath
+fixpath.FixPath()
+
 import time
 import tester
 import sys
-import os.path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import printastable
 
 def getTimeMs():
@@ -32,7 +33,7 @@ def main(solution):
         sz = 10 ** i
         stats = measureRunTime(solution, sz, 1000)
         data = data + [[sz, stats['setupTime'], stats['runTime']]]
-    printastable.printAsTable(header, data, '|')
+    printastable.printAsTable(header, data)
 
 if __name__ == '__main__':
     import sys
