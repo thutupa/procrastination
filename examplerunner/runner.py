@@ -1,7 +1,12 @@
 #!/usr/bin/python
 
+import fixpath
+fixpath.FixPath()
+
 import time
 import tester
+import sys
+import printastable
 
 def getTimeMs():
     return int(time.time() * 1000000)
@@ -22,11 +27,13 @@ def measureRunTime(solution, dataSize, testSize):
     return {'setupTime': startDataTestTimeMs - startTimeMs, 'runTime': endDataTestTimeMs - startDataTestTimeMs}
 
 def main(solution):
-    print '100      ', measureRunTime(solution, 100, 100)['runTime']
-    print '1000     ', measureRunTime(solution, 1000, 100)['runTime']
-    print '10000    ', measureRunTime(solution, 10000, 100)['runTime']
-    #print '100000   ', measureRunTime(solution, 100000, 100)['runTime']
-
+    header = ['size', 'build', 'run']
+    data = []
+    for i in range(2, 6):
+        sz = 10 ** i
+        stats = measureRunTime(solution, sz, 1000)
+        data = data + [[sz, stats['setupTime'], stats['runTime']]]
+    printastable.printAsTable(header, data)
 
 if __name__ == '__main__':
     import sys
