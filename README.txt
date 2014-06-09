@@ -1,9 +1,13 @@
 This is a simple test runner for learning datastructures. The output is in the following format
 
-100       16191
-1000      111517
-10000     1012842
-100000    10017391
++--------+-------+-----+
+|   size | build | run |
++--------+-------+-----+
+|    100 |     4 | 359 |
+|   1000 |     0 | 350 |
+|  10000 |     1 | 348 |
+| 100000 |     1 | 349 |
++--------+-------+-----+
 
 Each line is the size of the data and the time it takes to run n test cases (n = 100, but that can be changed).
 The way it works is as follows.
