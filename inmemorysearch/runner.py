@@ -2,6 +2,10 @@
 
 import time
 import tester
+import sys
+import os.path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+import printastable
 
 def getTimeMs():
     return int(time.time() * 1000000)
@@ -22,11 +26,13 @@ def measureRunTime(solution, dataSize, testSize):
     return {'setupTime': startDataTestTimeMs - startTimeMs, 'runTime': endDataTestTimeMs - startDataTestTimeMs}
 
 def main(solution):
-    print '   size |   build |     run'
+    header = ['size', 'build', 'run']
+    data = []
     for i in range(2, 6):
         sz = 10 ** i
         stats = measureRunTime(solution, sz, 1000)
-        print '% 7d | % 7d | % 7d' % (sz, stats['setupTime'], stats['runTime'])
+        data = data + [[sz, stats['setupTime'], stats['runTime']]]
+    printastable.printAsTable(header, data, '|')
 
 if __name__ == '__main__':
     import sys
