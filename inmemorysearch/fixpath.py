@@ -19,4 +19,3 @@ def FixPath():
     sys.path.append(os.path.join(baseDir, 'lib'))
     import fixpathlib
     fixpathlib.FixPath()
-    return
