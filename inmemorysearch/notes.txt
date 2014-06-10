@@ -1,0 +1,2 @@
+It's amazing how close the pythonhash is to the python native set, under the
+test conditions, all the way upto 10M entries.
